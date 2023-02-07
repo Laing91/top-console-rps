@@ -1,8 +1,9 @@
+let playerScore = 0;
+let computerScore = 0;
 
 
 // Task 1 - Create a function called getComputerChoice
 // that will randomly return either Rock, Paper or Scissors
-
 let getComputerChoice = () => {
     let randomNumber = Math.floor(Math.random() * 3) +1;
     if (randomNumber === 1) {
@@ -45,6 +46,16 @@ let playRound = (playerSelection, computerSelection) => {
     }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+//console.log(playRound(playerSelection, computerSelection));
+
+
+let game = () => {
+    for (let i = 0; i < 5; i++) {
+    	const playerSelection = getPlayerChoice();
+			const computerSelection = getComputerChoice();
+      let roundResult = playRound(playerSelection, computerSelection);
+      console.log(roundResult);
+    }
+}
+
+game();
