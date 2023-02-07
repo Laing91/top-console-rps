@@ -26,28 +26,36 @@ let getPlayerChoice = () => {
 
 let playRound = (playerSelection, computerSelection) => {
     if (playerSelection === "rock" && computerSelection === "rock") {
-        return "It/'s a draw, you both selected Rock."
+        playerScore, computerScore
+        return "It/'s a draw, you both selected Rock."    
     } else if (playerSelection === "rock" && computerSelection === "paper") {
+        computerScore += 1;
         return "You lose! Paper beats Rock."
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        playerScore += 1;
         return "You win! Rock beats Scissors."
     } else if (playerSelection === "paper" && computerSelection === "rock") {
+        playerScore += 1;
         return "You win! Paper beats Rock."
     } else if (playerSelection === "paper" && computerSelection === "paper") {
+        playerScore, computerScore
         return "It/'s a draw, you both selected Paper."
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        computerScore += 1;
         return "You lose! Scissors beat Paper."
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        computerScore += 1;
         return "You lose! Rock beats Scissors."
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        playerScore += 1;
         return "You win! Scissors beat Paper."
     } else if (playerSelection === "scissors" && computerSelection === "scissors") {
+        playerScore, computerScore;
         return "It/'s a draw, you both selected Rock."
     }
 }
 
-//console.log(playRound(playerSelection, computerSelection));
-
+//Create the game function to play 5 rounds and display the score and winner.
 
 let game = () => {
     for (let i = 0; i < 5; i++) {
@@ -55,6 +63,14 @@ let game = () => {
 			const computerSelection = getComputerChoice();
       let roundResult = playRound(playerSelection, computerSelection);
       console.log(roundResult);
+      console.log(`Your score is: ${playerScore} and the computer score is: ${computerScore}`);
+    }
+    if (computerScore > playerScore) {
+        console.log ("Unlucky, you lost this time.")
+    } else if (playerScore > computerScore) {
+        console.log ("Congratulations, you won!")
+    } else {
+        console.log ("Unlucky, this ends in a draw.")
     }
 }
 
